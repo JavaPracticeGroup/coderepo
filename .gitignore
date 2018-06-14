@@ -23,4 +23,5 @@
 hs_err_pid*
 /.metadata/
 *.project
-/.recommenders/
+/.recommenders/*
+/HelloWorld/Appconfig.json

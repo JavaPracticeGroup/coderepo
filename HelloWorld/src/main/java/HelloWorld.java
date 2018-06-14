@@ -7,9 +7,10 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.util.Scanner;
+import com.experiment.abhijit.AbhijitExperiment;
+import com.experiment.vivek.VivekExperiment;
 
 import org.json.JSONObject;
-
 
 /**
  * 
@@ -18,7 +19,7 @@ import org.json.JSONObject;
  */
 final class AppUtil {
 
-	public static String getFileContent(String filePath) {
+	public static String getFileContent(String filePath , boolean supressPrintStack) {
 		Scanner myScanner = null;
 		String content = null;
 		try {
@@ -26,7 +27,9 @@ final class AppUtil {
 			content = myScanner.useDelimiter("\\Z").next();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			if(!supressPrintStack)
+			{e.printStackTrace();
+			}
 		} finally {
 			myScanner.close();
 		}
@@ -54,47 +57,35 @@ final class AppUtil {
 
 /**
  * 
- * @author Abhijit Kumar
- *`
+ * @author Abhijit Kumar `
  */
-final class AppConfig {
-	private final static String root;
-	private final static String allowedDeletePathRoot;
-	private final static String dataLib;
-	private static boolean isDebugEnbld = false;
+class AppConfig {
+	private final static String user;
 	public final static boolean isDetailPrintLnEnabled = true;
-	public final static boolean isExperimentEnabled = false;
-	
+	public final static boolean isExperimentEnabled = true;
+
 	static {
 		String appConfigStr = null;
 		try {
-			appConfigStr = AppUtil.getFileContent("AppConfig.json");
+			appConfigStr = AppUtil.getFileContent("AppConfig.json",true);
 		} catch (Exception e) {
-			appConfigStr = "{}";
-			System.out.println(e.getMessage());
+			appConfigStr = AppUtil.getFileContent("AppConfigCopy.json",true);
 		}
 
-		String tRoot = null, tAllowedDeletePathRoot = null, tDataLib = null;
+		String tUser = null;
 		try {
 			JSONObject appConf = new JSONObject(appConfigStr);
-			tRoot = appConf.getString("ROOT_PATH");
-			tAllowedDeletePathRoot = appConf.getString("ROOT_PATH");
-			tDataLib = appConf.getString("DATA_PATH");
-			isDebugEnbld = appConf.optBoolean("DEBUG");
+			tUser = appConf.getString("USER_NAME");
 		} catch (Exception e) {
-			tRoot = null;
-			tAllowedDeletePathRoot = null;
-			tDataLib = null;
-			isDebugEnbld = false;
+			System.out.println("Error in AppConfig");
+			System.exit(0);
 		} finally {
-			root = tRoot;
-			allowedDeletePathRoot = tAllowedDeletePathRoot;
-			dataLib = tDataLib;
+			user = tUser;
 		}
 	}
-	
-	public static String getRoot(String path) {
-		return root + path;
+
+	public static String getUser() {
+		return user;
 	}
 }
 
@@ -106,11 +97,10 @@ final class AppConfig {
  *
  */
 public class HelloWorld {
-
 	/**
 	 * Please don't add your logic here. Instead of you can try in Experiment class
-	 * (just make sure Config.isExperimentEnabled is true) Else it will go through the
-	 * indexes which we mentioned in index function of BOOK class.
+	 * (just make sure Config.isExperimentEnabled is true) Else it will go through
+	 * the indexes which we mentioned in index function of BOOK class.
 	 * 
 	 * @param args
 	 */
@@ -118,17 +108,29 @@ public class HelloWorld {
 		PrintStream origOut = System.out;
 		PrintStream interceptor = new Interceptor(origOut);
 		System.setOut(interceptor);
+		String user = AppConfig.getUser();
+
 		if (!AppConfig.isExperimentEnabled) {
 			Book book = new Book();
 			book.index();
 		} else {
-			Experiment experiment = new Experiment();
-			experiment.start();
+			switch (user) {
+			case "Abhijit":
+				AbhijitExperiment abhijitExperiment = new AbhijitExperiment();
+				abhijitExperiment.start();
+				break;
+
+			case "Vivek":
+				VivekExperiment vivekExperiment = new VivekExperiment();
+				vivekExperiment.start();
+				break;
+
+			}
+
 		}
 	}
 
 }
-
 
 class Interceptor extends PrintStream {
 	public Interceptor(OutputStream out) {
@@ -152,7 +154,6 @@ class Interceptor extends PrintStream {
 		if (AppConfig.isDetailPrintLnEnabled) {
 			detailPrintLnData = filename + className + methodName + " --- ";
 		}
-		super.println(detailPrintLnData+s);
+		super.println(detailPrintLnData + s);
 	}
 }
-
