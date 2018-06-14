@@ -14,7 +14,7 @@ class Demonstrate {
 		// pDT.showBoolean();
 
 
-		// pDT.showByteClass();
+		 pDT.showByteClass();
 		// pDT.showShortClass();
 		// pDT.showIntClass();
 		// pDT.showLongClass();

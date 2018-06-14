@@ -115,8 +115,6 @@ public class HelloWorld {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Hello World");
-	
 		PrintStream origOut = System.out;
 		PrintStream interceptor = new Interceptor(origOut);
 		System.setOut(interceptor);
