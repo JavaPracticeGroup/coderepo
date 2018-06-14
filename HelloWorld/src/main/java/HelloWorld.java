@@ -61,8 +61,8 @@ final class AppUtil {
  */
 class AppConfig {
 	private final static String user;
-	public final static boolean isDetailPrintLnEnabled = true;
-	public final static boolean isExperimentEnabled = true;
+	public final static boolean isDetailPrintLnEnabled;
+	public final static boolean isExperimentEnabled;
 
 	static {
 		String appConfigStr = null;
@@ -73,14 +73,19 @@ class AppConfig {
 		}
 
 		String tUser = null;
+		boolean tIsDetailPrintLnEnabled=false,tIsExperimentEnabled=false;
 		try {
 			JSONObject appConf = new JSONObject(appConfigStr);
 			tUser = appConf.getString("USER_NAME");
+			tIsDetailPrintLnEnabled = appConf.optBoolean("IS_DETAIL_PRINTLN_ENABLED");
+			tIsExperimentEnabled = appConf.optBoolean("IS_EXPERIMENT_ENABLED");
 		} catch (Exception e) {
 			System.out.println("Error in AppConfig");
 			System.exit(0);
 		} finally {
 			user = tUser;
+			isDetailPrintLnEnabled=tIsDetailPrintLnEnabled;
+			isExperimentEnabled=tIsExperimentEnabled;
 		}
 	}
 
