@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package DataType;
 
 import java.util.Scanner;
@@ -6,7 +9,19 @@ import java.util.Scanner;
  * @author Abhijit Kumar
  *
  */
-public class PrimitiveDataTypes {
+
+/*
+ Primitive Data type are also know as Value type.
+ We can't change the definition since it is pre-defined.
+ Stores the value in Stack.
+ Here the size is pre-defined.
+ Size of the value is pre-defined.
+ 
+ Numeric - int, short, long, float, double.
+ Textual- byte, char.
+ Boolean- boolean
+ */
+public class PrimitiveDataType {
 	static Scanner input = new Scanner(System.in);
 
 	/* Variable is a named location in memory to store a value */
@@ -203,26 +218,3 @@ public class PrimitiveDataTypes {
 		System.out.println("Since the boolean default size is 1 bit, it doesn't have SIZE, MIN_VALUE and MAX_VALUE");
 	}
 }
-
-// PrimitiveDataTypes a = new PrimitiveDataTypes();
-
-
-// a.showByte();
-// a.showShort();
-// a.showInt();
-// a.showLong();
-// a.showChar();
-// a.showFloat();
-// a.showDouble();
-// a.showBoolean();
-
-
-// a.showByteClass();
-// a.showShortClass();
-// a.showIntClass();
-// a.showLongClass();
-// a.showCharClass();
-// a.showFloatClass();
-// a.showDoubleClass();
-// a.showBooleanClass();
-
