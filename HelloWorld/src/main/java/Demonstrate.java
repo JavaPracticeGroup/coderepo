@@ -1,4 +1,5 @@
 import DataType.PrimitiveDataType;
+import DataType.TypeCasting;
 
 class Demonstrate {
 
@@ -13,16 +14,20 @@ class Demonstrate {
 		// pDT.showDouble();
 		// pDT.showBoolean();
 
-
-		// pDT.showByteClass();
-		// pDT.showShortClass();
-		// pDT.showIntClass();
-		// pDT.showLongClass();
-		// pDT.showCharClass();
-		// pDT.showFloatClass();
-		// pDT.showDoubleClass();
-		// pDT.showBooleanClass();
+		pDT.showByteClass();
+		pDT.showShortClass();
+		pDT.showIntClass();
+		pDT.showLongClass();
+		pDT.showCharClass();
+		pDT.showFloatClass();
+		pDT.showDoubleClass();
+		pDT.showBooleanClass();
 
 	}
 	
+	public static void typeCasting() {
+		TypeCasting typeCasting = new TypeCasting();
+		typeCasting.byteToShort();
+	}
+
 }
