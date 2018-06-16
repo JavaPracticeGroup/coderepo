@@ -15,6 +15,34 @@ import org.apache.log4j.BasicConfigurator;
  *
  */
 public class HelloWorld {
+	
+	private class Interceptor extends PrintStream {
+		public Interceptor(OutputStream out) {
+			super(out, true);
+		}
+
+		@Override
+		public void println(String s) {
+			boolean isFileNameVisiabled = false, isClassNameVisiabled = true, isMethodNameVisiabled = true;
+
+			String className = (AppConfig.isDetailPrintLnEnabled && isClassNameVisiabled)
+					? Thread.currentThread().getStackTrace()[2].getClassName() + " :: "
+					: "";
+			String methodName = (AppConfig.isDetailPrintLnEnabled && isMethodNameVisiabled)
+					? Thread.currentThread().getStackTrace()[2].getMethodName() + " "
+					: "";
+			String filename = (AppConfig.isDetailPrintLnEnabled && isFileNameVisiabled)
+					? Thread.currentThread().getStackTrace()[2].getFileName() + " "
+					: "";
+			String detailPrintLnData = "";
+			if (AppConfig.isDetailPrintLnEnabled) {
+				detailPrintLnData = filename + className + methodName + " --- ";
+			}
+			super.println(detailPrintLnData + s);
+		}
+	}
+
+	
 	/**
 	 * Please don't add your logic here. Instead of you can try in Experiment class
 	 * (just make sure Config.isExperimentEnabled is true) Else it will go through
@@ -23,12 +51,13 @@ public class HelloWorld {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		String user = AppConfig.getUser();
+		HelloWorld helloWorld=new HelloWorld();
 		PrintStream origOut = System.out;
-		PrintStream interceptor = new Interceptor(origOut);
+		PrintStream interceptor = helloWorld.new Interceptor(origOut);
 		System.setOut(interceptor);
 		BasicConfigurator.configure();
-		String user = AppConfig.getUser();
-		/* AppUtil.runMe("ok"); */
+		
 		if (!AppConfig.isExperimentEnabled) {
 			Book book = new Book();
 			book.index();
@@ -51,28 +80,3 @@ public class HelloWorld {
 
 }
 
-class Interceptor extends PrintStream {
-	public Interceptor(OutputStream out) {
-		super(out, true);
-	}
-
-	@Override
-	public void println(String s) {
-		boolean isFileNameVisiabled = false, isClassNameVisiabled = true, isMethodNameVisiabled = true;
-
-		String className = (AppConfig.isDetailPrintLnEnabled && isClassNameVisiabled)
-				? Thread.currentThread().getStackTrace()[2].getClassName() + " :: "
-				: "";
-		String methodName = (AppConfig.isDetailPrintLnEnabled && isMethodNameVisiabled)
-				? Thread.currentThread().getStackTrace()[2].getMethodName() + " "
-				: "";
-		String filename = (AppConfig.isDetailPrintLnEnabled && isFileNameVisiabled)
-				? Thread.currentThread().getStackTrace()[2].getFileName() + " "
-				: "";
-		String detailPrintLnData = "";
-		if (AppConfig.isDetailPrintLnEnabled) {
-			detailPrintLnData = filename + className + methodName + " --- ";
-		}
-		super.println(detailPrintLnData + s);
-	}
-}
