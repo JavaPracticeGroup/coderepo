@@ -11,45 +11,41 @@ import java.util.Scanner;
  */
 
 /*
- Primitive Data type are also know as Value type.
- We can't change the definition since it is pre-defined.
- Stores the value in Stack.
- Here the size is pre-defined.
- Size of the value is pre-defined.
- 
- Class level variable - No initialization required (Default value exist)
- Method level variable - Initialization required
- 
- Numeric - int, short, long, float, double.
- Textual- byte, char.
- Boolean- boolean
+ * Primitive Data type are also know as Value type. We can't change the
+ * definition since it is pre-defined. Stores the value in Stack. Here the size
+ * is pre-defined. Size of the value is pre-defined.
+ * 
+ * Class level variable - No initialization required (Default value exist)
+ * Method level variable - Initialization required
+ * 
+ * Numeric - int, short, long, float, double. Textual- byte, char. Boolean-
+ * boolean
  */
 public class PrimitiveDataType {
-	
+
 	static Scanner input = new Scanner(System.in);
 
 	/* Variable is a named location in memory to store a value */
-	
+
 	/**
 	 * The range of a data type can be calculated as follows
 	 * 
-	 * Minimum Value ->   -2 ^ (Bits - 1)
+	 * Minimum Value -> -2 ^ (Bits - 1)
 	 * 
-	 * Maximum Value ->   ( 2 ^ (Bits -1) ) -1 
- 	 * 
- 	 * For eg, Byte -> 8 bits
- 	 * 
- 	 * Min Value -> -2^(8-1)       -> -2^7         ->   -128
- 	 * Max Value -> (2^(8-1)) -1   ->  (2^7) -1    ->   128-1    -> 127
- 	 * 
+	 * Maximum Value -> ( 2 ^ (Bits -1) ) -1
+	 * 
+	 * For eg, Byte -> 8 bits
+	 * 
+	 * Min Value -> -2^(8-1) -> -2^7 -> -128 Max Value -> (2^(8-1)) -1 -> (2^7)
+	 * -1 -> 128-1 -> 127
+	 * 
 	 */
-	
-	
+
 	/**
 	 * 
 	 * 2^8
 	 * 
-	 * Range - -128 to 127 
+	 * Range - -128 to 127
 	 */
 
 	public void showByte() {
@@ -98,19 +94,45 @@ public class PrimitiveDataType {
 		System.out.println("The Double you have typed: " + doubleVal.doubleValue());
 	}
 
+	/**
+	 * Boolean used in condition check or used as a flag
+	 */
 	public void showBoolean() {
 		System.out.println("Enter any value:");
-		Boolean booleanVal = new Boolean(input.nextBoolean());
-		System.out.println("The Boolean you have typed: " + booleanVal.booleanValue());
+		try {
+			Boolean booleanVal = new Boolean(input.nextBoolean());
+			System.out.println("The Boolean you have typed: " + booleanVal.booleanValue());
+		} catch (Exception e) {
+			// Allowed boolean values true/false are
+			Boolean b1 = new Boolean(true);
+			// Allowed strings "true" and "false" - not case sensitive
+			Boolean b2 = new Boolean("true");
+			// Strings other than "true"/"false" will be considered as false
+			Boolean b3 = new Boolean("Hello");
+			// Empty string value will be considered as false
+			Boolean b4 = new Boolean("");
+
+			
+			// -----  String parsing  ------
+			// Valid values -> 'true', 'TRUE', 'false', 'FALSE', 'trUE', ....
+			// Not case-sensitive 
+			boolean boolTrue = Boolean.parseBoolean("truE");
+			System.out.println(boolTrue);
+
+			// Converting boolean value to String
+			String boolVal = Boolean.toString(boolTrue);
+			System.out.println(boolVal);
+			
+			
+			
+			// System.out.println(b1 + "  " + b2 + "  " + b3 + "  " + b4);
+		}
 	}
 
 	/**
 	 * 
-	 * MIN     : -128
-	 * MAX     :  127
-	 * TYPE    :  Primitive > Numeric > Integral > Integer > byte
-	 * SIZE    :  8 (1 byte)
-	 * DEFAULT :  0
+	 * MIN : -128 MAX : 127 TYPE : Primitive > Numeric > Integral > Integer >
+	 * byte SIZE : 8 (1 byte) DEFAULT : 0
 	 * 
 	 */
 
@@ -125,18 +147,14 @@ public class PrimitiveDataType {
 		System.out.println("Maximum Value: " + Byte.MAX_VALUE);
 		System.out.println("Size: " + Byte.SIZE);
 	}
-	
-	
+
 	/**
 	 * 
-	 * MIN     : -32768
-	 * MAX     :  32767
-	 * TYPE    :  Primitive > Numeric > Integral > Integer > short
-	 * SIZE    :  16 (2 Byte)
-	 * DEFAULT :  0
+	 * MIN : -32768 MAX : 32767 TYPE : Primitive > Numeric > Integral > Integer
+	 * > short SIZE : 16 (2 Byte) DEFAULT : 0
 	 * 
 	 */
-	
+
 	public void showShortClass() {
 		System.out.println("Enter any short number:");
 		Short shortVal = new Short(input.nextShort());
@@ -149,17 +167,13 @@ public class PrimitiveDataType {
 		System.out.println("Size: " + Short.SIZE);
 	}
 
-
 	/**
 	 * 
-	 * MIN     : -32768
-	 * MAX     :  32767
-	 * TYPE    :  Primitive > Numeric > Integral > Integer > int	
-	 * SIZE    :  32 (4 Byte)
-	 * DEFAULT :  0
+	 * MIN : -32768 MAX : 32767 TYPE : Primitive > Numeric > Integral > Integer
+	 * > int SIZE : 32 (4 Byte) DEFAULT : 0
 	 * 
 	 */
-	
+
 	public void showIntClass() {
 		System.out.println("Enter any int number:");
 		Integer intVal = new Integer(input.nextInt());
@@ -173,17 +187,13 @@ public class PrimitiveDataType {
 
 	}
 
-	
 	/**
 	 * 
-	 * MIN     : -9223372036854775808
-	 * MAX     :  9223372036854775807
-	 * TYPE    :  Primitive > Numeric > Integral > Integer > long	
-	 * SIZE    :  64 (8 Byte)
-	 * DEFAULT :  0L
+	 * MIN : -9223372036854775808 MAX : 9223372036854775807 TYPE : Primitive >
+	 * Numeric > Integral > Integer > long SIZE : 64 (8 Byte) DEFAULT : 0L
 	 * 
 	 */
-	
+
 	public void showLongClass() {
 		System.out.println("Enter any long number:");
 		Long longVal = new Long(input.nextLong());
@@ -196,14 +206,10 @@ public class PrimitiveDataType {
 		System.out.println("Size: " + Long.SIZE);
 	}
 
-	
 	/**
 	 * 
-	 * MIN     :  0
-	 * MAX     :  65535
-	 * TYPE    :  Primitive > Numeric > Character > char	
-	 * SIZE    :  16 (2 Byte)
-	 * DEFAULT :  '/u0000' (Unicode) -> (Blank) 
+	 * MIN : 0 MAX : 65535 TYPE : Primitive > Numeric > Character > char SIZE :
+	 * 16 (2 Byte) DEFAULT : '/u0000' (Unicode) -> (Blank)
 	 * 
 	 */
 	public void showCharClass() {
@@ -220,11 +226,8 @@ public class PrimitiveDataType {
 
 	/**
 	 * 
-	 * MIN     :  1.4E-45
-	 * MAX     :  3.4028235E38
-	 * TYPE    :  Primitive > Numeric > Integral > Floating Point > float	
-	 * SIZE    :  32 (4 Byte)
-	 * DEFAULT :  0.0f
+	 * MIN : 1.4E-45 MAX : 3.4028235E38 TYPE : Primitive > Numeric > Integral >
+	 * Floating Point > float SIZE : 32 (4 Byte) DEFAULT : 0.0f
 	 * 
 	 */
 
@@ -242,14 +245,11 @@ public class PrimitiveDataType {
 
 	/**
 	 * 
-	 * MIN     :  4.9E-324
-	 * MAX     :  1.7976931348623157E308
-	 * TYPE    :  Primitive > Numeric > Integral > Floating Point > double	
-	 * SIZE    :  64 (8 Byte)
-	 * DEFAULT :  0.0d
+	 * MIN : 4.9E-324 MAX : 1.7976931348623157E308 TYPE : Primitive > Numeric >
+	 * Integral > Floating Point > double SIZE : 64 (8 Byte) DEFAULT : 0.0d
 	 * 
 	 */
-	
+
 	public void showDoubleClass() {
 		System.out.println("Enter any number with decimals:");
 		Double doubleVal = new Double(input.nextDouble());
@@ -261,29 +261,28 @@ public class PrimitiveDataType {
 		System.out.println("Maximum Value: " + Double.MAX_VALUE);
 		System.out.println("Size: " + Double.SIZE);
 	}
-	
+
 	/**
 	 * 
-	 * TYPE    :  Primitive > Boolean > boolean	
-	 * SIZE    :  1 bit -> 1 (true) or 0 (false)
-	 * DEFAULT :  false
+	 * TYPE : Primitive > Boolean > boolean SIZE : 1 bit -> 1 (true) or 0
+	 * (false) DEFAULT : false
 	 * 
 	 */
-	
+
 	public void showBooleanClass() {
 		System.out.println("Enter any value:");
 		Boolean booleanVal = new Boolean(input.nextBoolean());
 
 		// Boolean object can be constructed using boolean or string value
-		
+
 		Boolean boolVal = new Boolean(true);
 		Boolean stringBoolVal = new Boolean("true");
 		System.out.println(boolVal + "  " + stringBoolVal);
-		
+
 		// Converting Boolean to a boolean value
 		System.out.println(boolVal.booleanValue());
 		System.out.println(stringBoolVal.booleanValue());
-		
+
 		System.out.println("The Boolean you have typed: " + booleanVal.booleanValue());
 		System.out.println("Type: " + Boolean.TYPE);
 		System.out.println("True:" + Boolean.TRUE);
