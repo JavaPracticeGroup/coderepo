@@ -10,11 +10,12 @@ import com.system.application.AppUtil;
 public class DataTypeExperiment {
 
 	/**
-	 * When we provide value bigger than it In byte if we provide value bigger than
-	 * its max value i.e Max+1 min value. This won't apply for "float" and "double".
-	 * In short where ever the max is in E format.
+	 * When we provide value bigger than it can hold. Let take an example : In byte
+	 * if we provide value bigger its max value i.e Max + 1 then it will change to
+	 * its min value. This won't apply for "float" and "double". In short where ever
+	 * the max is in E format.
 	 * 
-	 * Example (byte byteVal=127+1 is -128 and 127+2 is -127 ...; And this loop
+	 * Example where it applies : (byte byteVal=127+1 is -128 and 127+2 is -127 ...; And this loop
 	 * continue... )
 	 */
 	public void overflowRule() {
@@ -55,15 +56,18 @@ public class DataTypeExperiment {
 
 		System.out.println("FloatMax = " + (float) (Float.MAX_VALUE));
 		System.out.println("FloatMax + 1 = " + (float) (Float.MAX_VALUE + 1));
-		System.out.println("FloatMax + 1234567890123456789012345678901.0f = " + (float) (Float.MAX_VALUE + 1234567890123456789012345678901.0f));
-		System.out.println("FloatMax == (FloatMax + 1234567890123456789012345678901.0) is "+((float) (Float.MAX_VALUE + 1234567890123456789012345678901.0) == (float) (Float.MAX_VALUE)));
-		System.out.println("FloatMax == (FloatMax + 12345678901234567890123456789012.0) is "+((float) (Float.MAX_VALUE + 12345678901234567890123456789012.0) == (float) (Float.MAX_VALUE)));
+		System.out.println("FloatMax + 1234567890123456789012345678901.0f = "
+				+ (float) (Float.MAX_VALUE + 1234567890123456789012345678901.0f));
+		System.out.println("FloatMax == (FloatMax + 1234567890123456789012345678901.0) is "
+				+ ((float) (Float.MAX_VALUE + 1234567890123456789012345678901.0) == (float) (Float.MAX_VALUE)));
+		System.out.println("FloatMax == (FloatMax + 12345678901234567890123456789012.0) is "
+				+ ((float) (Float.MAX_VALUE + 12345678901234567890123456789012.0) == (float) (Float.MAX_VALUE)));
 		AppUtil.lineBreak();
 		System.out.println("FloatMin = " + (float) (Float.MIN_VALUE));
 		System.out.println("FloatMin - 1  = " + (float) (Float.MIN_VALUE - 1));
 		System.out.println("FloatMin - 2  = " + (float) (Float.MIN_VALUE - 2));
 		System.out.println((float) (Float.MIN_VALUE) == (float) (Float.MIN_VALUE - 2.2234343));
-		
+
 		AppUtil.lineBreak();
 		AppUtil.lineBreak();
 
@@ -74,10 +78,10 @@ public class DataTypeExperiment {
 		System.out.println("LongMin = " + (long) (Long.MIN_VALUE));
 		System.out.println("LongMin - 1  = " + (long) (Long.MIN_VALUE - 1));
 		System.out.println("LongMin - 2  = " + (long) (Long.MIN_VALUE - 2));
-		
+
 		AppUtil.lineBreak();
 		AppUtil.lineBreak();
-		
+
 		System.out.println("DoubleMax = " + (double) (Double.MAX_VALUE));
 		System.out.println("DoubleMax + 1 = " + (double) (Double.MAX_VALUE + 1));
 		System.out.println("DoubleMax + 2L = " + (double) (Double.MAX_VALUE + 2L));
@@ -85,7 +89,7 @@ public class DataTypeExperiment {
 		System.out.println("DoubleMin = " + (double) (Double.MIN_VALUE));
 		System.out.println("DoubleMin - 1  = " + (double) (Double.MIN_VALUE - 1));
 		System.out.println("DoubleMin - 2  = " + (double) (Double.MIN_VALUE - 2));
-	
+
 		AppUtil.functionBreak();
 	}
 
