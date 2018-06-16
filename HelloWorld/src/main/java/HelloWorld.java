@@ -1,98 +1,11 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.PrintStream;
-import java.util.Scanner;
 import com.experiment.abhijit.AbhijitExperiment;
+import com.experiment.packages.Experiment;
 import com.experiment.vivek.VivekExperiment;
+import com.system.application.*;
 
-import org.json.JSONObject;
-
-/**
- * 
- * @author Abhijit Kumar
- *
- */
-final class AppUtil {
-
-	public static String getFileContent(String filePath , boolean supressPrintStack) {
-		Scanner myScanner = null;
-		String content = null;
-		try {
-			myScanner = new Scanner(new File(filePath));
-			content = myScanner.useDelimiter("\\Z").next();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			if(!supressPrintStack)
-			{e.printStackTrace();
-			}
-		} finally {
-			myScanner.close();
-		}
-
-		return content;
-	}
-
-	public static void writeToFile(String fileAbsolutePath, String content) {
-		BufferedWriter writer = null;
-		try {
-
-			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileAbsolutePath), "utf-8"));
-			writer.write(content);
-
-		} catch (IOException ex) {
-			System.out.println(ex);
-		} finally {
-			try {
-				writer.close();
-			} catch (Exception ex) {
-				/* ignore */}
-		}
-	}
-}
-
-/**
- * 
- * @author Abhijit Kumar `
- */
-class AppConfig {
-	private final static String user;
-	public final static boolean isDetailPrintLnEnabled;
-	public final static boolean isExperimentEnabled;
-
-	static {
-		String appConfigStr = null;
-		try {
-			appConfigStr = AppUtil.getFileContent("AppConfig.json",true);
-		} catch (Exception e) {
-			appConfigStr = AppUtil.getFileContent("AppConfigCopy.json",true);
-		}
-
-		String tUser = null;
-		boolean tIsDetailPrintLnEnabled=false,tIsExperimentEnabled=false;
-		try {
-			JSONObject appConf = new JSONObject(appConfigStr);
-			tUser = appConf.getString("USER_NAME");
-			tIsDetailPrintLnEnabled = appConf.optBoolean("IS_DETAIL_PRINTLN_ENABLED");
-			tIsExperimentEnabled = appConf.optBoolean("IS_EXPERIMENT_ENABLED");
-		} catch (Exception e) {
-			System.out.println("Error in AppConfig");
-			System.exit(0);
-		} finally {
-			user = tUser;
-			isDetailPrintLnEnabled=tIsDetailPrintLnEnabled;
-			isExperimentEnabled=tIsExperimentEnabled;
-		}
-	}
-
-	public static String getUser() {
-		return user;
-	}
-}
+import org.apache.log4j.BasicConfigurator;
 
 /**
  * 
@@ -113,8 +26,9 @@ public class HelloWorld {
 		PrintStream origOut = System.out;
 		PrintStream interceptor = new Interceptor(origOut);
 		System.setOut(interceptor);
+		BasicConfigurator.configure();
 		String user = AppConfig.getUser();
-
+		/* AppUtil.runMe("ok"); */
 		if (!AppConfig.isExperimentEnabled) {
 			Book book = new Book();
 			book.index();

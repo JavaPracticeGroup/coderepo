@@ -6,7 +6,7 @@ class Demonstrate {
 		PrimitiveDataType pDT = new PrimitiveDataType();
 		//pDT.showByte();
 		// pDT.showShort();
-		// pDT.showInt();
+		 pDT.showInt();
 		// pDT.showLong();
 		// pDT.showChar();
 		// pDT.showFloat();

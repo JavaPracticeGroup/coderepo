@@ -1,5 +1,7 @@
 {
 	"USER_NAME": "Abhijit",
+	
 	"IS_DETAIL_PRINTLN_ENABLED": true,
-	"IS_EXPERIMENT_ENABLED": false
+	
+	"IS_EXPERIMENT_ENABLED": true
 }
