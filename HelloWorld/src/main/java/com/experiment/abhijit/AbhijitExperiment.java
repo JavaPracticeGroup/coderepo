@@ -1,19 +1,19 @@
 package com.experiment.abhijit;
+
 import com.experiment.packages.*;
 
 import DataType.PrimitiveDataType;
 
-public class AbhijitExperiment extends Experiment{
-	
+public class AbhijitExperiment extends Experiment {
+
 	public AbhijitExperiment() {
 		super();
-		// TODO Auto-generated constructor stub
+		System.out.println("...");
 	}
 
 	public void start() {
-		System.out.println("...");
-		PrimitiveDataType pDt = new PrimitiveDataType();
-		pDt.showInt();
+		DataTypeExperiment dt = new DataTypeExperiment();
+		dt.start();
 	}
 
 }

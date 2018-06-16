@@ -4,16 +4,15 @@ import DataType.TypeCasting;
 class Demonstrate {
 
 	public static void primitiveDataTypes() {
-
 		PrimitiveDataType pDT = new PrimitiveDataType();
-//		pDT.showByte();
-//		pDT.showShort();
-//		pDT.showInt();
-//		pDT.showLong();
-//		pDT.showChar();
-//		pDT.showFloat();
-//		pDT.showDouble();
-//		pDT.showBoolean();
+		//pDT.showByte();
+		// pDT.showShort();
+		 pDT.showInt();
+		// pDT.showLong();
+		// pDT.showChar();
+		// pDT.showFloat();
+		// pDT.showDouble();
+		// pDT.showBoolean();
 
 		pDT.showByteClass();
 		pDT.showShortClass();
