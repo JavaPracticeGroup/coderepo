@@ -93,6 +93,9 @@ public class DataTypeExperiment {
 		AppUtil.functionBreak();
 	}
 
+	/**
+	 * Please check overflowRule for DataType before starting DataType Conversion
+	 */
 	public void dataTypeConversion() {
 		byte byteVal = 0;
 		int intVal = 127 + 2;
@@ -101,7 +104,7 @@ public class DataTypeExperiment {
 	}
 
 	public void start() {
-		overflowRule();
+		dataTypeConversion();
 	}
 
 }
