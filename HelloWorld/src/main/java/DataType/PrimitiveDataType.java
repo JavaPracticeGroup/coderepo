@@ -17,11 +17,15 @@ import java.util.Scanner;
  Here the size is pre-defined.
  Size of the value is pre-defined.
  
+ Class level variable - No initialization required (Default value exist)
+ Method level variable - Initialization required
+ 
  Numeric - int, short, long, float, double.
  Textual- byte, char.
  Boolean- boolean
  */
 public class PrimitiveDataType {
+	
 	static Scanner input = new Scanner(System.in);
 
 	/* Variable is a named location in memory to store a value */
@@ -52,7 +56,6 @@ public class PrimitiveDataType {
 		System.out.println("Enter any byte:");
 		byte byteVal = input.nextByte();
 		System.out.println("The Byte you have typed: " + byteVal);
-
 	}
 
 	public void showShort() {
@@ -103,9 +106,12 @@ public class PrimitiveDataType {
 
 	/**
 	 * 
+	 * MIN     : -128
+	 * MAX     :  127
+	 * TYPE    :  Primitive > Numeric > Integral > Integer > byte
+	 * SIZE    :  8 (1 byte)
+	 * DEFAULT :  0
 	 * 
-	 * 
-	 * Range - 128 to -127
 	 */
 
 	public void showByteClass() {
@@ -119,7 +125,18 @@ public class PrimitiveDataType {
 		System.out.println("Maximum Value: " + Byte.MAX_VALUE);
 		System.out.println("Size: " + Byte.SIZE);
 	}
-
+	
+	
+	/**
+	 * 
+	 * MIN     : -32768
+	 * MAX     :  32767
+	 * TYPE    :  Primitive > Numeric > Integral > Integer > short
+	 * SIZE    :  16 (2 Byte)
+	 * DEFAULT :  0
+	 * 
+	 */
+	
 	public void showShortClass() {
 		System.out.println("Enter any short number:");
 		Short shortVal = new Short(input.nextShort());
@@ -132,10 +149,17 @@ public class PrimitiveDataType {
 		System.out.println("Size: " + Short.SIZE);
 	}
 
+
 	/**
-	 * Type -> Primitive > Numeric > Integral > Integer Default value - 0
-	 * Default size - 4byte
+	 * 
+	 * MIN     : -32768
+	 * MAX     :  32767
+	 * TYPE    :  Primitive > Numeric > Integral > Integer > int	
+	 * SIZE    :  32 (4 Byte)
+	 * DEFAULT :  0
+	 * 
 	 */
+	
 	public void showIntClass() {
 		System.out.println("Enter any int number:");
 		Integer intVal = new Integer(input.nextInt());
@@ -149,6 +173,17 @@ public class PrimitiveDataType {
 
 	}
 
+	
+	/**
+	 * 
+	 * MIN     : -9223372036854775808
+	 * MAX     :  9223372036854775807
+	 * TYPE    :  Primitive > Numeric > Integral > Integer > long	
+	 * SIZE    :  64 (8 Byte)
+	 * DEFAULT :  0L
+	 * 
+	 */
+	
 	public void showLongClass() {
 		System.out.println("Enter any long number:");
 		Long longVal = new Long(input.nextLong());
@@ -161,6 +196,16 @@ public class PrimitiveDataType {
 		System.out.println("Size: " + Long.SIZE);
 	}
 
+	
+	/**
+	 * 
+	 * MIN     :  0
+	 * MAX     :  65535
+	 * TYPE    :  Primitive > Numeric > Character > char	
+	 * SIZE    :  16 (2 Byte)
+	 * DEFAULT :  '/u0000' (Unicode) -> (Blank) 
+	 * 
+	 */
 	public void showCharClass() {
 		System.out.println("Enter any character:");
 		Character characterVal = new Character(input.next().charAt(0));
@@ -172,6 +217,16 @@ public class PrimitiveDataType {
 		System.out.println("Maximum Value: " + Character.MAX_VALUE);
 		System.out.println("Size: " + Character.SIZE);
 	}
+
+	/**
+	 * 
+	 * MIN     :  1.4E-45
+	 * MAX     :  3.4028235E38
+	 * TYPE    :  Primitive > Numeric > Integral > Floating Point > float	
+	 * SIZE    :  32 (4 Byte)
+	 * DEFAULT :  0.0f
+	 * 
+	 */
 
 	public void showFloatClass() {
 		System.out.println("Enter any number with decimals:");
@@ -185,6 +240,16 @@ public class PrimitiveDataType {
 		System.out.println("Size: " + Float.SIZE);
 	}
 
+	/**
+	 * 
+	 * MIN     :  4.9E-324
+	 * MAX     :  1.7976931348623157E308
+	 * TYPE    :  Primitive > Numeric > Integral > Floating Point > double	
+	 * SIZE    :  64 (8 Byte)
+	 * DEFAULT :  0.0d
+	 * 
+	 */
+	
 	public void showDoubleClass() {
 		System.out.println("Enter any number with decimals:");
 		Double doubleVal = new Double(input.nextDouble());
@@ -196,7 +261,15 @@ public class PrimitiveDataType {
 		System.out.println("Maximum Value: " + Double.MAX_VALUE);
 		System.out.println("Size: " + Double.SIZE);
 	}
-
+	
+	/**
+	 * 
+	 * TYPE    :  Primitive > Boolean > boolean	
+	 * SIZE    :  1 bit -> 1 (true) or 0 (false)
+	 * DEFAULT :  false
+	 * 
+	 */
+	
 	public void showBooleanClass() {
 		System.out.println("Enter any value:");
 		Boolean booleanVal = new Boolean(input.nextBoolean());
