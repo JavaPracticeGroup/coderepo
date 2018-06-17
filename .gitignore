@@ -27,3 +27,7 @@ hs_err_pid*
 /.recommenders/*
 /HelloWorld/Appconfig.json
 /.recommenders/
+HelloWorld/.settings/org.eclipse.buildship.core.prefs
+HelloWorld/.settings/org.eclipse.jdt.core.prefs
+RemoteSystemsTempFiles/.project
+
