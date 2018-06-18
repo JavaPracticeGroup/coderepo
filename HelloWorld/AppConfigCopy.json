@@ -3,5 +3,7 @@
 	
 	"IS_DETAIL_PRINTLN_ENABLED": true,
 	
-	"IS_EXPERIMENT_ENABLED": true
+	"IS_EXPERIMENT_ENABLED": false,
+	
+	"IS_PRINT_TAG_ONLY":false
 }
